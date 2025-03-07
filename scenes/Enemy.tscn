@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://lcbka1pbeogv"]
+
+[ext_resource type="Script" path="res://scenes/Enemy.gd" id="1_jxupj"]
+[ext_resource type="Texture2D" uid="uid://n3ltphk2jb6b" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Blue/alienBlue_walk1.png" id="1_ujo6d"]
+[ext_resource type="Texture2D" uid="uid://dacb2virqyisg" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Blue/alienBlue_walk2.png" id="2_l5vqy"]
+[ext_resource type="PackedScene" uid="uid://dimu24o8wtcw7" path="res://scenes/LoseArea.tscn" id="4_0e4gu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ws7o3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ujo6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_l5vqy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1r3ug"]
+radius = 39.0
+height = 146.0
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_jxupj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ws7o3")
+frame = 1
+frame_progress = 0.737765
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 61)
+shape = SubResource("CapsuleShape2D_1r3ug")
+
+[node name="LoseArea" parent="." instance=ExtResource("4_0e4gu")]
+position = Vector2(3.57628e-07, 58)
+scale = Vector2(6.15504, 7.30164)
+collision_layer = 0

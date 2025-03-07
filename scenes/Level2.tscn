@@ -1,0 +1,204 @@
+[gd_scene load_steps=13 format=4 uid="uid://bh3yceeip0bc1"]
+
+[ext_resource type="Texture2D" uid="uid://waka2vnagn14" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_sand.png" id="1_851gw"]
+[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="2_dc4x4"]
+[ext_resource type="Script" path="res://scenes/EnemyTrigger.gd" id="3_ovv1r"]
+[ext_resource type="PackedScene" uid="uid://lcbka1pbeogv" path="res://scenes/Enemy.tscn" id="3_x6bkd"]
+[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="5_t8ide"]
+[ext_resource type="PackedScene" uid="uid://dimu24o8wtcw7" path="res://scenes/LoseArea.tscn" id="6_jv8co"]
+[ext_resource type="Script" path="res://scenes/spawner.gd" id="8_73hwg"]
+[ext_resource type="Script" path="res://scenes/LoseArea.gd" id="8_fsc2t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ckx6"]
+texture = ExtResource("1_851gw")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, 4, 53, -15, 45, -38, 33, -55, 10, -64, -18)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -64, 64, -7, 53, 16, 34, 35, 5, 51, -17, 56, -42, 64, -64, 64, -64, -64)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -64, 64, 64, -64, -20, -64, -64)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -64, 64, -22, -64, 64, -64, -64)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -64, 64, 8, -64, 11, -64, -64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 8, -64, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 8, -64, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 8, -64, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, 64, -64, 64)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -64, 64, 64, -64, 64)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_ipnp1"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_6ckx6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnjqi"]
+size = Vector2(106, 276)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xf6x"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD6/wIAAQAHAAEAAAD7/wIAAQAHAAEAAAD8/wIAAQAHAAEAAAD9/wIAAQAHAAEAAAD+/wIAAQAHAAEAAAD//wIAAQAHAAEAAAAAAAIAAQAHAAEAAAD5/wIAAQAGAAEAAAABAAMAAQAHAAAAAAACAAQAAQAHAAAAAAABAAIAAQAEAAEAAAACAAMAAQAEAAEAAAADAAQAAQAEAAEAAAAEAAUAAQAEAAEAAAADAAUAAQAHAAAAAAAAAAMAAQABAAAAAAAAAAQAAQABAAAAAAAAAAUAAQABAAAAAAABAAUAAQABAAAAAAACAAUAAQABAAAAAAABAAQAAQABAAAAAAD5/wMAAQABAAAAAAD5/wQAAQABAAAAAAD5/wUAAQABAAAAAAD6/wUAAQABAAAAAAD7/wUAAQABAAAAAAD8/wUAAQABAAAAAAD9/wUAAQABAAAAAAD+/wUAAQABAAAAAAD//wUAAQABAAAAAAD//wQAAQABAAAAAAD+/wQAAQABAAAAAAD9/wQAAQABAAAAAAD8/wQAAQABAAAAAAD7/wQAAQABAAAAAAD6/wQAAQABAAAAAAD6/wMAAQABAAAAAAD7/wMAAQABAAAAAAD8/wMAAQABAAAAAAD9/wMAAQABAAAAAAD+/wMAAQABAAAAAAD//wMAAQABAAAAAAAEAAYAAQAHAAEAAFAEAAcAAQAHAAEAAFAEAAgAAQAHAAEAAFAEAAkAAQAHAAEAAFADAAYAAQABAAAAAAACAAYAAQABAAAAAAABAAYAAQABAAAAAAAAAAYAAQABAAAAAAD//wYAAQABAAAAAAD+/wYAAQABAAAAAAD9/wYAAQABAAAAAAD8/wYAAQABAAAAAAD7/wYAAQABAAAAAAD6/wYAAQABAAAAAAD5/wYAAQABAAAAAAD5/wcAAQABAAAAAAD5/wgAAQABAAAAAAD5/wkAAQABAAAAAAD6/wkAAQABAAAAAAD7/wkAAQABAAAAAAD8/wkAAQABAAAAAAD9/wkAAQABAAAAAAD+/wkAAQABAAAAAAD//wkAAQABAAAAAAAAAAkAAQABAAAAAAABAAkAAQABAAAAAAACAAkAAQABAAAAAAADAAkAAQABAAAAAAADAAcAAQABAAAAAAADAAgAAQABAAAAAAACAAgAAQABAAAAAAABAAgAAQABAAAAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAAAAAcAAQABAAAAAAAAAAgAAQABAAAAAAD//wgAAQABAAAAAAD+/wgAAQABAAAAAAD9/wgAAQABAAAAAAD8/wgAAQABAAAAAAD8/wcAAQABAAAAAAD9/wcAAQABAAAAAAD+/wcAAQABAAAAAAD//wcAAQABAAAAAAD7/wcAAQABAAAAAAD7/wgAAQABAAAAAAD6/wgAAQABAAAAAAD6/wcAAQABAAAAAAAIAAYAAQAHAAEAAGAIAAcAAQAHAAEAAGAIAAgAAQAHAAEAAGAIAAkAAQAHAAEAAGAIAAUAAQAFAAEAAAAJAAQAAQAFAAEAAAAKAAMAAQAFAAEAAAALAAIAAQAFAAEAAAAMAAIAAQAHAAEAAAANAAIAAQAHAAEAAAAOAAIAAQAHAAEAAAAPAAIAAQAHAAEAAAAQAAIAAQAHAAEAAAARAAIAAQAHAAEAAAALAAMAAQAIAAAAAAAKAAQAAQAIAAAAAAAJAAUAAQAIAAAAAAAMAAMAAQABAAAAAAANAAMAAQABAAAAAAAOAAMAAQABAAAAAAAPAAMAAQABAAAAAAAQAAMAAQABAAAAAAARAAMAAQABAAAAAAARAAQAAQABAAAAAAARAAUAAQABAAAAAAARAAYAAQABAAAAAAAQAAYAAQABAAAAAAAQAAUAAQABAAAAAAAQAAQAAQABAAAAAAAPAAQAAQABAAAAAAAOAAQAAQABAAAAAAAOAAUAAQABAAAAAAAOAAYAAQABAAAAAAAOAAcAAQABAAAAAAANAAYAAQABAAAAAAANAAUAAQABAAAAAAAPAAUAAQABAAAAAAAPAAYAAQABAAAAAAAPAAcAAQABAAAAAAANAAQAAQABAAAAAAAMAAQAAQABAAAAAAALAAUAAQABAAAAAAALAAYAAQABAAAAAAALAAcAAQABAAAAAAALAAQAAQABAAAAAAAKAAUAAQABAAAAAAAKAAYAAQABAAAAAAAKAAcAAQABAAAAAAAJAAgAAQABAAAAAAAJAAcAAQABAAAAAAAJAAYAAQABAAAAAAAJAAkAAQABAAAAAAAKAAkAAQABAAAAAAALAAkAAQABAAAAAAAMAAkAAQABAAAAAAAMAAgAAQABAAAAAAAMAAcAAQABAAAAAAAMAAYAAQABAAAAAAAMAAUAAQABAAAAAAALAAgAAQABAAAAAAAKAAgAAQABAAAAAAAOAAgAAQABAAAAAAAOAAkAAQABAAAAAAANAAkAAQABAAAAAAANAAgAAQABAAAAAAANAAcAAQABAAAAAAAPAAkAAQABAAAAAAAPAAgAAQABAAAAAAAQAAcAAQABAAAAAAAQAAgAAQABAAAAAAAQAAkAAQABAAAAAAARAAkAAQABAAAAAAARAAgAAQABAAAAAAARAAcAAQABAAAAAAAEAAMAAQABAAEAAAAFAAMAAQACAAEAAAAGAAMAAQACAAEAAAAHAAMAAQACAAEAAAAIAAMAAQADAAEAAAAUAAIAAQADAAAAAAAVAAIAAQAHAAEAAAAWAAIAAQAHAAEAAAAXAAIAAQAHAAEAAAAYAAIAAQAHAAEAAAAZAAIAAQAHAAEAAAAaAAIAAQAHAAEAAAAbAAIAAQAEAAAAAAAeAAEAAQADAAAAAAAfAAEAAQAHAAEAAAAgAAEAAQAHAAEAAAAhAAEAAQAHAAEAAAAiAAEAAQAHAAEAAAAjAAEAAQAHAAEAAAAkAAEAAQAHAAEAAAAlAAEAAQAEAAAAAAAoAAEAAQADAAAAAAApAAEAAQAHAAEAAAAqAAEAAQAHAAEAAAArAAEAAQAHAAEAAAAsAAEAAQAHAAEAAAAtAAEAAQAHAAEAAAAuAAEAAQAHAAEAAAAvAAEAAQAEAAAAAAAyAAMAAQADAAAAAAAzAAMAAQAHAAEAAAA0AAMAAQAHAAEAAAA1AAMAAQAHAAEAAAA2AAMAAQAHAAEAAAA3AAMAAQAHAAEAAAA4AAMAAQAHAAEAAAA5AAMAAQAEAAAAAAA=")
+tile_set = SubResource("TileSet_ipnp1")
+
+[node name="Player" parent="." instance=ExtResource("2_dc4x4")]
+position = Vector2(-193, 130)
+
+[node name="EnemyFlip" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="EnemyFlip"]
+position = Vector2(530, 312)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D9" type="Area2D" parent="EnemyFlip"]
+position = Vector2(530, 312)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D9"]
+position = Vector2(-2768, -278)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D10" type="Area2D" parent="EnemyFlip"]
+position = Vector2(530, 312)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D10"]
+position = Vector2(3486, -248)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D2" type="Area2D" parent="EnemyFlip"]
+position = Vector2(1128, 314)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D2"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D3" type="Area2D" parent="EnemyFlip"]
+position = Vector2(2595, 185)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D3"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D4" type="Area2D" parent="EnemyFlip"]
+position = Vector2(3542, 178)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D4"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D5" type="Area2D" parent="EnemyFlip"]
+position = Vector2(3888, 55)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D5"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D6" type="Area2D" parent="EnemyFlip"]
+position = Vector2(4829, 57)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D6"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D7" type="Area2D" parent="EnemyFlip"]
+position = Vector2(5169, 52)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D7"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Area2D8" type="Area2D" parent="EnemyFlip"]
+position = Vector2(6107, 54)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ovv1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFlip/Area2D8"]
+position = Vector2(-8, 2)
+shape = SubResource("RectangleShape2D_qnjqi")
+
+[node name="Enemy" parent="." instance=ExtResource("3_x6bkd")]
+position = Vector2(614, 304)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_x6bkd")]
+position = Vector2(2696, 174)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_x6bkd")]
+position = Vector2(4000, 47)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_x6bkd")]
+position = Vector2(5278, 41)
+
+[node name="FamiliarLookingRocket" type="Sprite2D" parent="."]
+position = Vector2(6896, 141)
+texture = ExtResource("5_t8ide")
+
+[node name="LoseArea" parent="FamiliarLookingRocket" instance=ExtResource("6_jv8co")]
+scale = Vector2(12.76, 24.88)
+sceneName = "WinScreen"
+
+[node name="Void" type="Area2D" parent="."]
+position = Vector2(616, 1776)
+scale = Vector2(888.06, -18.3211)
+script = ExtResource("8_fsc2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Void"]
+shape = SubResource("RectangleShape2D_6xf6x")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("8_73hwg")
+obstacle = ExtResource("3_x6bkd")
+
+[connection signal="body_entered" from="EnemyFlip/Area2D" to="EnemyFlip/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D9" to="EnemyFlip/Area2D9" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D10" to="EnemyFlip/Area2D10" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D2" to="EnemyFlip/Area2D2" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D3" to="EnemyFlip/Area2D3" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D4" to="EnemyFlip/Area2D4" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D5" to="EnemyFlip/Area2D5" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D6" to="EnemyFlip/Area2D6" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D7" to="EnemyFlip/Area2D7" method="_on_body_entered"]
+[connection signal="body_entered" from="EnemyFlip/Area2D8" to="EnemyFlip/Area2D8" method="_on_body_entered"]

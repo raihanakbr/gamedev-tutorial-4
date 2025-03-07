@@ -78,3 +78,9 @@ frame = 2
 libraries = {
 "": SubResource("AnimationLibrary_sbh6e")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -308
+limit_top = -10000
+limit_right = 10000
+limit_bottom = 10000

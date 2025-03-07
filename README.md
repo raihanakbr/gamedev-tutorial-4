@@ -1,0 +1,4 @@
+1. Proses Pembuatan TileMap dan LoseArea/WinArea kurang lebih sama dengan apa yang diajarkan oleh tutorial
+2. Saya membuat obstacle baru yaitu Enemy, di mana enemy otomatis berjalan, Enemy memiliki Area2D yaitu LoseArea untuk mendeteksi jika Player collide. Enemy flip jika ada Area2D yang diberi script sehingga jika ada object yang memiliki metode flip, maka akan di flip. Hal ini merupakan polishing yang saya implementasikan sehingga enemy tidak jatuh ketika wandering di platform. Implementasi yang saya buat cukup simple dan masih ada implementasi yang lebih baik (tidak cukup waktu karena PPL pls forgivb). 
+3. Spawner yang saya implementasi akan men-spawn Enemy yang saya jelaskan sebelumnya
+4. Implementasi ini murni dari pengalaman + ChatGPT sebagai coding consultant
