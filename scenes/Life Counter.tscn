@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://5c3g5hmhg1ya"]
+
+[ext_resource type="Script" path="res://scenes/live_label.gd" id="1_cvk7w"]
+[ext_resource type="FontFile" uid="uid://cee0o7kecp8dl" path="res://assets/Oswald-VariableFont_wght.ttf" id="1_qmhfp"]
+
+[node name="GUI" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qmhfp")
+theme_override_font_sizes/font_size = 30
+text = "asudh"
+script = ExtResource("1_cvk7w")

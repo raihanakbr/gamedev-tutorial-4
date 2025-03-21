@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="5_t8ide"]
 [ext_resource type="PackedScene" uid="uid://dimu24o8wtcw7" path="res://scenes/LoseArea.tscn" id="6_jv8co"]
 [ext_resource type="Script" path="res://scenes/spawner.gd" id="8_73hwg"]
-[ext_resource type="Script" path="res://scenes/LoseArea.gd" id="8_fsc2t"]
+[ext_resource type="PackedScene" uid="uid://oysdgvf2uwl5" path="res://scenes/PauseUI.tscn" id="9_goqal"]
+[ext_resource type="PackedScene" uid="uid://5c3g5hmhg1ya" path="res://scenes/Life Counter.tscn" id="10_gfjp4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ckx6"]
 texture = ExtResource("1_851gw")
@@ -56,8 +57,6 @@ sources/1 = SubResource("TileSetAtlasSource_6ckx6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnjqi"]
 size = Vector2(106, 276)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xf6x"]
 
 [node name="Level2" type="Node2D"]
 
@@ -180,17 +179,22 @@ texture = ExtResource("5_t8ide")
 scale = Vector2(12.76, 24.88)
 sceneName = "WinScreen"
 
-[node name="Void" type="Area2D" parent="."]
-position = Vector2(616, 1776)
-scale = Vector2(888.06, -18.3211)
-script = ExtResource("8_fsc2t")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Void"]
-shape = SubResource("RectangleShape2D_6xf6x")
-
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("8_73hwg")
 obstacle = ExtResource("3_x6bkd")
+
+[node name="LoseArea" parent="." instance=ExtResource("6_jv8co")]
+position = Vector2(2424, 1905)
+scale = Vector2(600, 14.586)
+sceneName = "Level2"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseUI" parent="CanvasLayer" instance=ExtResource("9_goqal")]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("10_gfjp4")]
+offset_right = 63.0
+offset_bottom = 45.0
 
 [connection signal="body_entered" from="EnemyFlip/Area2D" to="EnemyFlip/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="EnemyFlip/Area2D9" to="EnemyFlip/Area2D9" method="_on_body_entered"]

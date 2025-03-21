@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 var direction: float = 1
 
 @onready var animSprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var raycast: RayCast2D = $RayCast2D
 
 
 func _ready() -> void:
@@ -23,6 +24,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider.name == "Enemy":
+			flip()
 
 
 func flip() -> void:

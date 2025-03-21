@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccyewuonqh38s"]
+
+[ext_resource type="Script" path="res://scenes/link_button.gd" id="1_imqwg"]
+[ext_resource type="FontFile" uid="uid://cee0o7kecp8dl" path="res://assets/Oswald-VariableFont_wght.ttf" id="1_nl4q4"]
+[ext_resource type="Texture2D" uid="uid://dacb2virqyisg" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Blue/alienBlue_walk2.png" id="3_vtndu"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_nl4q4")
+theme_override_font_sizes/font_size = 100
+text = "Alien!"
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_nl4q4")
+theme_override_font_sizes/font_size = 30
+text = "Play"
+underline = 1
+script = ExtResource("1_imqwg")
+scene_to_load = "LevelSelectUI"
+
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_nl4q4")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+underline = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_vtndu")
+stretch_mode = 3
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]

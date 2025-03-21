@@ -40,3 +40,8 @@ shape = SubResource("CapsuleShape2D_1r3ug")
 position = Vector2(3.57628e-07, 58)
 scale = Vector2(6.15504, 7.30164)
 collision_layer = 0
+sceneName = "Level2"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-2, 32)
+target_position = Vector2(84, 0)

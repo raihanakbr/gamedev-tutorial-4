@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://yqmk0vpvnyxr"]
+[gd_scene load_steps=11 format=4 uid="uid://yqmk0vpvnyxr"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://76hi8rt1miuo" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_grass.png" id="2_l3gyl"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dimu24o8wtcw7" path="res://scenes/LoseArea.tscn" id="4_sre0g"]
 [ext_resource type="Script" path="res://scenes/Spawner.gd" id="5_f0n0c"]
 [ext_resource type="PackedScene" uid="uid://cudn8xkl6ugmp" path="res://scenes/FallingFish.tscn" id="6_vu33j"]
+[ext_resource type="PackedScene" uid="uid://5c3g5hmhg1ya" path="res://scenes/Life Counter.tscn" id="7_rh1n5"]
+[ext_resource type="PackedScene" uid="uid://oysdgvf2uwl5" path="res://scenes/PauseUI.tscn" id="8_ucyq5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nt5l1"]
 texture = ExtResource("2_l3gyl")
@@ -81,3 +83,12 @@ obstacle = ExtResource("6_vu33j")
 [node name="LoseArea" parent="." instance=ExtResource("4_sre0g")]
 position = Vector2(10, 756)
 scale = Vector2(-683.603, 12.6244)
+sceneName = "Level1"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("7_rh1n5")]
+size_flags_horizontal = 4
+
+[node name="PauseUI" parent="CanvasLayer" instance=ExtResource("8_ucyq5")]
+process_mode = 3
